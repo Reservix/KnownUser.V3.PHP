@@ -1,0 +1,14 @@
+{
+    "name": "att/knownuserv3",
+    "description": "Known User implementation forked from queueit KnownUser.V3.PHP",
+    "type": "library",
+    "license": "GNU LGPL",
+    "authors": [
+        {
+            "name": "Attila",
+            "email": "attfuss@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
