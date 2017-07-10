@@ -1,8 +1,9 @@
 <?php
+use KnownUser\KnownUser;
+
 error_reporting(E_ALL);
-require_once( __DIR__ .'/../Models.php');
-require_once( __DIR__ .'/../KnownUser.php');
-$configText = file_get_contents('integrationconfig.json');
+
+$configText = file_get_contents(__DIR__ . '/integrationconfig.json');
 $customerID = ""; //Your Queue-it customer ID
 $secretKey = ""; //Your 72 char secrete key as specified in Go Queue-it self-service platform
 $queueittoken = isset( $_GET["queueittoken"] )? $_GET["queueittoken"] :'';
@@ -11,9 +12,9 @@ try
 {
     $fullUrl = getFullRequestUri();
 	//Verify if the user has been through the queue
-    $result = QueueIT\KnownUserV3\SDK\KnownUser::validateRequestByIntegrationConfig($fullUrl, 
+    $result = KnownUser::validateRequestByIntegrationConfig($fullUrl,
 			$queueittoken, $configText, $customerID, $secretKey);
-	
+
     if($result->doRedirect())
     {
         //Send the user to the queue - either becuase hash was missing or becuase is was invalid
@@ -22,7 +23,7 @@ try
     }
     if(!empty($queueittoken))
     {
-        
+
 		//Request can continue - we remove queueittoken form querystring parameter to avoid sharing of user specific token
         if(strpos($fullUrl,"&queueittoken=")!==false)
         {
@@ -44,7 +45,7 @@ catch(\Exception $e)
 	//log the exception
 }
 
-  
+
  function getFullRequestUri()
  {
      // Get HTTP/HTTPS (the possible values for this vary from server to server)
@@ -56,7 +57,7 @@ catch(\Exception $e)
     // Add path info, if any
     if (!empty($_SERVER['PATH_INFO'])) $myUrl .= $_SERVER['PATH_INFO'];
 
-    return $myUrl; 
+    return $myUrl;
  }
 ?>
  <html>
@@ -68,7 +69,7 @@ catch(\Exception $e)
     <table border="0" cellpadding="10">
       <tr>
         <td>
-         
+
         </td>
         <td>
           <h1>Sample KnownUser implementation 1 </h1>

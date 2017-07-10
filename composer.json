@@ -9,6 +9,14 @@
             "email": "attfuss@gmail.com"
         }
     ],
+    "version": "0.01",
     "minimum-stability": "dev",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "KnownUser\\": "lib/KnownUser"
+        }
+    },
+    "require": {
+        "php": ">=5.5"
+    }
 }
