@@ -1,5 +1,5 @@
 {
-    "name": "att/knownuserv3",
+    "name": "reservix/knownuserv3",
     "description": "Known User implementation forked from queueit KnownUser.V3.PHP",
     "type": "library",
     "license": "GNU LGPL",
